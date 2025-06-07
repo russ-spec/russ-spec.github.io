@@ -6,24 +6,24 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/russ-spec/russ-spec.github.io/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/russ-spec/russ-spec.github.io/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/russ-spec/russ-spec.github.io/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/russ-spec/russ-spec.github.io/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/russ-spec/russ-spec.github.io/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=console:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"github.com","root":"/russ-spec/russ-spec.github.io/","images":"/russ-spec/russ-spec.github.io/images","scheme":"Gemini","darkmode":"auto","version":"8.23.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"default"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":20},"language":true,"border_radius":"3.0em"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/russ-spec/russ-spec.github.io/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/russ-spec/russ-spec.github.io/js/config.js" defer></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"russ-spec.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":"auto","version":"8.23.1","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"default"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":20},"language":true,"border_radius":"3.0em"},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.json","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js" defer></script>
 
     <meta name="description" content="在阅读karpathy大神的开源项目llm.c时, 发现在重复运行CUDA Kernel统计性能的时候，每次Launch Kernel前有一个cudaMemset, 以擦除L2缓存数据，从而得到算子更准确的性能数据。代码如下: 1234567891011121314151617181920212223242526272829303132333435template&lt;class Kernel,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to scrub L2 cache in GPU?">
-<meta property="og:url" content="https://github.com/russ-spec/russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/index.html">
+<meta property="og:url" content="https://russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/index.html">
 <meta property="og:site_name" content="R-Space">
 <meta property="og:description" content="在阅读karpathy大神的开源项目llm.c时, 发现在重复运行CUDA Kernel统计性能的时候，每次Launch Kernel前有一个cudaMemset, 以擦除L2缓存数据，从而得到算子更准确的性能数据。代码如下: 1234567891011121314151617181920212223242526272829303132333435template&lt;class Kernel,">
 <meta property="og:locale" content="en_US">
@@ -34,10 +34,10 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://github.com/russ-spec/russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/">
+<link rel="canonical" href="https://russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://github.com/russ-spec/russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/","path":"2025/06/07/How-to-scrub-L2-cache-in-GPU/","title":"How to scrub L2 cache in GPU?"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/","path":"2025/06/07/How-to-scrub-L2-cache-in-GPU/","title":"How to scrub L2 cache in GPU?"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>How to scrub L2 cache in GPU? | R-Space</title>
@@ -52,10 +52,10 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/russ-spec/russ-spec.github.io/js/utils.js" defer></script><script src="/russ-spec/russ-spec.github.io/js/motion.js" defer></script><script src="/russ-spec/russ-spec.github.io/js/sidebar.js" defer></script><script src="/russ-spec/russ-spec.github.io/js/next-boot.js" defer></script><script src="/russ-spec/russ-spec.github.io/js/bookmark.js" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/bookmark.js" defer></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous" defer></script>
-<script src="/russ-spec/russ-spec.github.io/js/third-party/search/local-search.js" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
 
 
 
@@ -72,7 +72,7 @@
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/russ-spec/russ-spec.github.io/js/third-party/math/mathjax.js" defer></script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
 
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
@@ -90,7 +90,7 @@
 }
 </style><script type="text/javascript" src="/js/src/clicklove.js"></script>
   <noscript>
-    <link rel="stylesheet" href="/russ-spec/russ-spec.github.io/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -110,7 +110,7 @@
 
   <div class="site-meta">
 
-    <a href="/russ-spec/russ-spec.github.io/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">R-Space</p>
       <i class="logo-line"></i>
@@ -128,7 +128,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/russ-spec/russ-spec.github.io/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/russ-spec/russ-spec.github.io/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/russ-spec/russ-spec.github.io/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">1</span></a></li><li class="menu-item menu-item-categories"><a href="/russ-spec/russ-spec.github.io/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">0</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">1</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">0</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -185,20 +185,20 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Russ"
-      src="/russ-spec/russ-spec.github.io/images/avatar.gif">
+      src="/images/avatar.gif">
   <p class="site-author-name" itemprop="name">Russ</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/russ-spec/russ-spec.github.io/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/russ-spec/russ-spec.github.io/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -231,10 +231,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://github.com/russ-spec/russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/">
+    <link itemprop="mainEntityOfPage" href="https://russ-spec.github.io/2025/06/07/How-to-scrub-L2-cache-in-GPU/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/russ-spec/russ-spec.github.io/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Russ">
     </span>
 
@@ -295,14 +295,14 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>在阅读karpathy大神的开源项目<a href="https://github.com/karpathy/llm.c">llm.c</a>时, 发现在重复运行CUDA Kernel统计性能的时候，每次Launch Kernel前有一个cudaMemset, 以擦除L2缓存数据，从而得到算子更准确的性能数据。<br>代码如下:</p>
+    <div class="post-body" itemprop="articleBody"><p>在阅读karpathy大神的开源项目<a target="_blank" rel="noopener" href="https://github.com/karpathy/llm.c">llm.c</a>时, 发现在重复运行CUDA Kernel统计性能的时候，每次Launch Kernel前有一个cudaMemset, 以擦除L2缓存数据，从而得到算子更准确的性能数据。<br>代码如下:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> Kernel, <span class="keyword">class</span>... KernelArgs&gt;</span></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">benchmark_kernel</span><span class="params">(<span class="type">int</span> repeats, Kernel kernel, KernelArgs&amp;&amp;... kernel_args)</span> </span>&#123;</span><br><span class="line">    cudaEvent_t start, stop;</span><br><span class="line">    <span class="comment">// prepare buffer to scrub L2 cache between benchmarks</span></span><br><span class="line">    <span class="comment">// just memset a large dummy array, recommended by</span></span><br><span class="line">    <span class="comment">// https://stackoverflow.com/questions/31429377/how-can-i-clear-flush-the-l2-cache-and-the-tlb-of-a-gpu</span></span><br><span class="line">    <span class="comment">// and apparently used in nvbench.</span></span><br><span class="line">    <span class="type">int</span> deviceIdx = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">cudaCheck</span>(<span class="built_in">cudaSetDevice</span>(deviceIdx));</span><br><span class="line">    cudaDeviceProp deviceProp;</span><br><span class="line">    <span class="built_in">cudaCheck</span>(<span class="built_in">cudaGetDeviceProperties</span>(&amp;deviceProp, deviceIdx));</span><br><span class="line">    <span class="type">void</span>* flush_buffer;</span><br><span class="line">    <span class="built_in">cudaCheck</span>(<span class="built_in">cudaMalloc</span>(&amp;flush_buffer, deviceProp.l2CacheSize));</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaCheck</span>(<span class="built_in">cudaEventCreate</span>(&amp;start));</span><br><span class="line">    <span class="built_in">cudaCheck</span>(<span class="built_in">cudaEventCreate</span>(&amp;stop));</span><br><span class="line">    <span class="type">float</span> elapsed_time = <span class="number">0.f</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; repeats; i++) &#123;</span><br><span class="line">        <span class="comment">// clear L2</span></span><br><span class="line">        <span class="built_in">cudaCheck</span>(<span class="built_in">cudaMemset</span>(flush_buffer, <span class="number">0</span>, deviceProp.l2CacheSize));</span><br><span class="line">        <span class="comment">// now we can start recording the timing of the kernel</span></span><br><span class="line">        <span class="built_in">cudaCheck</span>(<span class="built_in">cudaEventRecord</span>(start, <span class="literal">nullptr</span>));</span><br><span class="line">        <span class="built_in">kernel</span>(std::forward&lt;KernelArgs&gt;(kernel_args)...);</span><br><span class="line">        <span class="built_in">cudaCheck</span>(<span class="built_in">cudaEventRecord</span>(stop, <span class="literal">nullptr</span>));</span><br><span class="line">        <span class="built_in">cudaCheck</span>(<span class="built_in">cudaEventSynchronize</span>(start));</span><br><span class="line">        <span class="built_in">cudaCheck</span>(<span class="built_in">cudaEventSynchronize</span>(stop));</span><br><span class="line">        <span class="type">float</span> single_call;</span><br><span class="line">        <span class="built_in">cudaCheck</span>(<span class="built_in">cudaEventElapsedTime</span>(&amp;single_call, start, stop));</span><br><span class="line">        elapsed_time += single_call;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cudaCheck</span>(<span class="built_in">cudaFree</span>(flush_buffer));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> elapsed_time / repeats;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>参考:</p>
 <ol>
-<li><a href="https://github.com/karpathy/llm.c/blob/f1e2ace651495b74ae22d45d1723443fd00ecd3a/dev/cuda/common.h#L352">llm.c benckmark_kernel</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/karpathy/llm.c/blob/f1e2ace651495b74ae22d45d1723443fd00ecd3a/dev/cuda/common.h#L352">llm.c benckmark_kernel</a></li>
 <li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31429377/how-can-i-clear-flush-the-l2-cache-and-the-tlb-of-a-gpu">how-can-i-clear-flush-the-l2-cache-and-the-tlb-of-a-gpu</a></li>
-<li><a href="https://github.com/NVIDIA/nvbench/">nvbench</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/NVIDIA/nvbench/">nvbench</a></li>
 </ol>
 
     </div>
@@ -319,7 +319,7 @@
       </div>
     </div>
           <div class="post-tags">
-              <a href="/russ-spec/russ-spec.github.io/tags/GPU/" rel="tag"><i class="fa fa-tag"></i> GPU</a>
+              <a href="/tags/GPU/" rel="tag"><i class="fa fa-tag"></i> GPU</a>
           </div>
 
         
